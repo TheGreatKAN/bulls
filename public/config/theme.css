@@ -1,8 +1,9 @@
 :root {
   --primary: white;
-  --primary-text: black;
+  --primary-text: rgb(0, 0, 0);
   --secondary: black;
-  --secondary-text: black;
+  --secondary-text: rgb(31, 30, 30);
   --accent: black;
   --accent-text: black;
+  --hover-text: rgb(255, 255, 255);
 }

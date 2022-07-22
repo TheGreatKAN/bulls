@@ -56,7 +56,7 @@ export const BOX = styled.div`
   flex-direction: ${({ fd }) => (fd ? fd : "column")};
   justify-content: ${({ jc }) => (jc ? jc : "flex-start")};
   align-items: ${({ ai }) => (ai ? ai : "flex-start")};
-  background-color: ${({ test }) => (test ? "pink" : "none")};
+  background-color: ${({ test }) => (test ? "white" : "none")};
   width: 100%;
   background-image: ${({ image }) => (image ? `url(${image})` : "none")};
   background-size: cover;
@@ -128,16 +128,16 @@ export const Icons = styled.img`
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 1px solid #F7A443;
+    border: 1px solid #000000;
 `;
 
 export const StyledLink = styled.a`
-  color: var(--primary-text);
+  color: var(--hover-text);
   text-decoration: none;
   margin-right: 5rem;
   cursor: pointer;
   :hover {
-    color: #FF8938;
+    color: #00ddfc;
   }
   @media (max-width: 565px) {
     margin-right: 0.75rem;

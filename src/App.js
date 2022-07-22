@@ -5,6 +5,8 @@ import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
 import Web3 from "web3";
+import Web3EthContract from "web3-eth-contract";
+
 
 
 const truncate = (input, len) =>
@@ -14,7 +16,7 @@ export const StyledButton = styled.button`
   padding: 10px;
   border-radius: 50px;
   border: none;
-  background-color: #E48509;
+  background-color: #00DDFC;
   padding: 10px;
   font-weight: bold;
   color: var(--secondary-text);
@@ -29,6 +31,8 @@ export const StyledButton = styled.button`
     -moz-box-shadow: none;
   }
 `;
+
+
 
 export const StyledRoundButton = styled.button`
   padding: 10px;
@@ -61,12 +65,15 @@ export const ResponsiveWrapper = styled.div`
   flex-direction: column;
   justify-content: stretched;
   align-items: stretched;
-  width: 50%;
-  align-self: flex-start;
+  width: 9
+  0%;
+  align-self: center;
   @media (min-width: 767px) {
     flex-direction: row;
   }
 `;
+
+
 
 export const ResponsiveWrapperHeader = styled.div`
   display: flex;
@@ -77,7 +84,8 @@ export const ResponsiveWrapperHeader = styled.div`
   width: 100%;
   max-height: 80px;
   padding: 10px;
-  background-color : #FFF5EA;
+  background:radial-gradient(farthest-corner at 40px 40px,
+    #000000 30%, #d6d6d6 50%);
   @media (min-width: 767px) {
     flex-direction: row;
   }
@@ -88,9 +96,18 @@ export const ResponsiveWrapperHeader = styled.div`
 
 export const StyledLogo = styled.img`
   display: inline;
-  width: 60px;
+  width: 360px;
   @media (max-width: 767px) {
-    width: 60px;
+    width: 360px;
+  }
+  transition: width 0.5s;
+  transition: height 0.5s;
+`;
+
+export const StyledLogo2 = styled.img`
+  width: 200px;
+  @media (min-width: 767px) {
+    width: 300px;
   }
   transition: width 0.5s;
   transition: height 0.5s;
@@ -120,8 +137,38 @@ export const StyledImg = styled.img`
   transition: width 0.5s;
 `;
 
+export const StyledImg2 = styled.img`
+  
+  width: 500px;
+  @media (min-width: 900px) {
+    width: 5250px;
+  }
+  @media (min-width: 1000px) {
+    width: 500px;
+  }
+  transition: width 0.5s;
+`;
+
+export const StyledImg3 = styled.img`
+
+
+position: absolute;
+bottom: 10px;
+right: 20px;
+  border-radius: 0%;
+  width: 150px;
+  @media (min-width: 900px) {
+    width: 275px;
+  }
+  @media (min-width: 1000px) {
+    width: 268px;
+  }
+  transition: width 0.5s;
+`;
+
+
 export const StyledLink = styled.a`
-  color: #CECECE;
+  color: #FFFFFF;
   text-decoration: none;
   :hover {
     color: #FF8938;
@@ -141,8 +188,9 @@ export const StyledHR = styled.hr`
 export const WalletBox = styled.div`
   text-decoration: none;
   border-radius: 10px;
-  border: 2px solid #F4B469;
-  background-color: #FFFDF7;
+  border: 2px solid #000000;
+  background:radial-gradient(farthest-corner at 10px 10px,
+    #00DDFC 10%, #000000 90%);
   //padding: 10px;
   font-weight: bold;
   font-size: 15px;
@@ -156,7 +204,7 @@ export const WalletBox = styled.div`
   -webkit-box-shadow: 0px 4px 0px -2px rgba(250, 250, 250, 0.3);
   -moz-box-shadow: 0px 4px 0px -2px rgba(250, 250, 250, 0.3);
   :hover {
-    background-color: #FFF5EA;
+    background-color: #000000;
   }
 `;
 
@@ -488,37 +536,33 @@ function App() {
                 <ResponsiveWrapperHeader>
 
 <LogoDiv>
-<a href="https://messycats.io/" target={"_blank"}>
-  <StyledLogo alt={"logo"} src={"/config/images/logo.png"} />
+<a href="https://streetpunks.art" target={"_blank"}>
+  <StyledLogo alt={"logo"} src={"/config/images/bulls.png"} />
 </a>
 </LogoDiv>
 
 <s.Headerlinks>
-  <s.StyledLink href="https://messycats.io/#about" target={"_blank"}>
-    About Us
+  <s.StyledLink href="https://bulls-world.com/" target={"_blank"}>
+    BULLS WORLD 2.0
   </s.StyledLink >
-  <s.StyledLink href="https://messycats.io/#faq" target={"_blank"}>
-    Roadmap
-    </s.StyledLink>
-    <s.StyledLink href="https://messycats.io/#faq" target={"_blank"}>
-    Faq
-    </s.StyledLink>
-    <s.StyledLink href="https://messycats.io/#team" target={"_blank"}>
-    Team
-    </s.StyledLink>
+  <s.StyledLink href="https://bad-bulls-nfts.netlify.app/" target={"_blank"}>
+    BAD BULLS NFT MINTING
+  </s.StyledLink >
+
 
 </s.Headerlinks>
 
 <s.HeaderDiv>
-  <a href="https://twitter.com/MessyCatsNFT" target={"_blank"}>
+  <a href="https://twitter.com/RealBullsWorld" target={"_blank"}>
 <s.Icons src="/config/images/twitter.svg" alt="twitter" />
 </a>
-<a href="https://discord.gg/KmfRPmVrd6" target={"_blank"}>
+<a href="https://discord.gg/ehewm9K6eY" target={"_blank"}>
 <s.Icons src="/config/images/discord.svg" alt="discord" />
 </a>
-<a href={CONFIG.MARKETPLACE_LINK} target={"_blank"}>
-<s.Icons src="/config/images/opensea.svg" alt="opensea" />
+<a href="https://t.me/bullsofficial" target={"_blank"}>
+<s.Icons src="/config/images/telegram.svg" alt="telegram" />
 </a>
+
 </s.HeaderDiv>
 
 <WalletBox
@@ -529,7 +573,7 @@ onClick={(e) => {
             }}>
   {blockchain.account !== "" ? (
   <>
-  <s.TextSubTitle style={{fontSize: "1rem", color: "#0B0E27"}}>
+  <s.TextSubTitle style={{fontSize: "1rem", color: "#ffffff"}}>
     {walletAddress}
     </s.TextSubTitle>
   </>
@@ -539,28 +583,31 @@ onClick={(e) => {
 <s.SpacerLarge/>
 
 
-        <s.TextDescription
-                        style={{
-                          textAlign: "center",
-                          color: "var(--accent-text)",
-                          fontSize: 20,
-                        }}
-                      >
-                        Stake your NFT for Reward
-                      </s.TextDescription>
+<StyledLogo2 alt={"logo"} src={"/config/images/Title1.gif"} />
 
         <s.SpacerSmall />
 
+        <ResponsiveWrapper flex={1}  style={{ padding: 24 }} >
+        <ResponsiveWrapper flex={2}  style={{ padding: 24 }} >
+ <break>
+ 
+  <p><StyledImg2 alt={"example"} src={"/config/images/TOSTAKE.png"} />  </p>
+   
+    
+ 
+  
+  </break>
+  </ResponsiveWrapper>
 
-        <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
-
-
+  
           <s.BOX
-            flex={2}
+         
+            flex={10}
             jc={"center"}
             ai={"center"}
             style={{
-              backgroundColor: "rgb(108 93 173 / 64%)",
+            
+              backgroundColor: "rgb(255 255 255 / 20%)",
               padding: 24,
               borderRadius: 24,
               boxShadow: "0px 10px 11px 2px rgba(0,0,0,0.7)",
@@ -778,14 +825,36 @@ onClick={(e) => {
                 )}
             <s.SpacerMedium />
           </>)}
-          </s.BOX>
-          <s.SpacerLarge />
 
-        </ResponsiveWrapper>
+          
+          </s.BOX>
+
+<p><StyledImg2 alt={"example"} src={"/config/images/Unstake.png"} />  </p>
+  </ResponsiveWrapper>
+  <a href={"https://t.me/+mF05PQOhrKtjZWI5"}>
+<p><StyledImg3 alt={"example"} src={"/config/images/playin.gif"} />  </p>
+</a>
+     
+
+
+  
+      
+
+
+
+          <s.SpacerLarge />
+ 
+      
+        
+       
         <s.SpacerMedium />
 
       </s.Container>
+
+
+      
     </s.Screen>
+    
   );
 }
 
